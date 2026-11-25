@@ -168,7 +168,7 @@ const PROJECTS = [
     title: "Milli-Spinner Thrombectomy Device",
     year: "2025",
     featured: true,
-    tags: ["Medical Device", "Biomechanics", "CAD", "Testing"],
+    tags: ["Medical Device", "CAD", "Testing"],
     role: "Research Assistant — Zhao Lab / SIM Lab, Stanford",
     summary:
       "A minimally invasive thrombectomy device that reduces blood clot volume by up to 95% by mechanically altering clot microstructure, rather than cutting or rupturing it.",
