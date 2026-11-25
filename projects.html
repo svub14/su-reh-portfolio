@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Su Reh</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="projects">
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav-name">Su Reh</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="projects.html" data-page="projects">Projects</a></li>
+        <li><a href="about.html" data-page="about">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" style="padding-bottom: 32px;">
+      <p class="hero-eyebrow">Projects</p>
+      <h1 style="font-size: clamp(30px, 5vw, 48px);">Research, CAD &amp; Builds</h1>
+      <p class="lead">A growing collection of research projects, CAD work, and hands-on builds. Click any project for the full write-up.</p>
+    </section>
+
+    <section class="section container" style="padding-top: 0;">
+      <div class="project-grid" id="all-projects-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <span>&copy; <span id="year"></span> Su Reh</span>
+    <span>
+      <a href="#" data-email-link>sreh14@stanford.edu</a> ·
+      <a href="#" data-linkedin-link target="_blank" rel="noopener">LinkedIn</a>
+    </span>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderProjectGrid(document.getElementById("all-projects-grid"), PROJECTS);
+  </script>
+</body>
+</html>

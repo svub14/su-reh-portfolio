@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Su Reh</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="about">
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav-name">Su Reh</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="projects.html" data-page="projects">Projects</a></li>
+        <li><a href="about.html" data-page="about">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section container">
+      <div class="about-grid">
+        <div>
+          <img class="about-photo" id="about-photo" src="assets/images/su-reh-photo.jpg" alt="Su Reh" style="object-fit: cover;">
+          <ul class="contact-list">
+            <li id="about-location"></li>
+            <li><a href="#" data-email-link id="about-email"></a></li>
+            <li><a href="#" data-linkedin-link target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+          <a href="#" class="btn btn-primary" data-resume-link target="_blank" rel="noopener" style="margin-top:20px; width:100%; text-align:center;">Download Resume</a>
+        </div>
+
+        <div>
+          <p class="hero-eyebrow">About</p>
+          <h1 style="font-size: clamp(30px, 5vw, 44px); margin: 0 0 20px;">Hi, I'm Su.</h1>
+          <p id="about-bio" style="font-size: 16px; line-height: 1.7; color: var(--ink-soft);"></p>
+
+          <h4 style="text-transform:uppercase; letter-spacing:.1em; font-size:13px; margin-top:32px;">Education</h4>
+          <div id="about-education"></div>
+
+          <h4 style="text-transform:uppercase; letter-spacing:.1em; font-size:13px; margin-top:8px;">Skills</h4>
+          <div class="skills-grid" id="about-skills"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head"><h2>Experience</h2></div>
+      <div id="about-experience"></div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head"><h2>Leadership</h2></div>
+      <div id="about-leadership"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <span>&copy; <span id="year"></span> Su Reh</span>
+    <span>
+      <a href="#" data-email-link>sreh14@stanford.edu</a> ·
+      <a href="#" data-linkedin-link target="_blank" rel="noopener">LinkedIn</a>
+    </span>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("about-bio").textContent = PROFILE.aboutBio;
+    document.getElementById("about-location").textContent = PROFILE.location;
+    document.getElementById("about-email").textContent = PROFILE.email;
+
+    document.getElementById("about-education").innerHTML = PROFILE.education.map((e) => `
+      <div class="timeline-item">
+        <h4>${escapeHTML(e.school)}</h4>
+        <div class="org">${escapeHTML(e.detail)}</div>
+        <div class="date">${escapeHTML(e.date)}</div>
+      </div>`).join("");
+
+    document.getElementById("about-skills").innerHTML = PROFILE.skills.map((s) => `
+      <div>
+        <h4>${escapeHTML(s.category)}</h4>
+        <div>${s.items.map((i) => `<span class="tag">${escapeHTML(i)}</span>`).join("")}</div>
+      </div>`).join("");
+
+    function renderTimeline(containerId, items) {
+      document.getElementById(containerId).innerHTML = items.map((item) => `
+        <div class="timeline-item">
+          <h4>${escapeHTML(item.role)}</h4>
+          <div class="org">${escapeHTML(item.org)}</div>
+          <div class="date">${escapeHTML(item.date)}</div>
+          <ul>${item.bullets.map((b) => `<li>${escapeHTML(b)}</li>`).join("")}</ul>
+        </div>`).join("");
+    }
+
+    renderTimeline("about-experience", PROFILE.experience);
+    renderTimeline("about-leadership", PROFILE.leadership);
+  </script>
+</body>
+</html>
